@@ -23,14 +23,14 @@ Just type what you need in plain English and Sora figures out what to do:
 The system has a **primary agent** (root agent) that acts like a manager. It reads your request and routes it to the right sub-agent:
 
 ```
-You
- ↓
 Sora Assistant (Root Agent)
- ├── Task Agent       → handles to-dos
- ├── Calendar Agent   → handles scheduling
- └── Notes Agent      → handles information
+ ├── Task Agent       → create, list, update, delete to-dos
+ ├── Calendar Agent   → create, list, update, delete events
+ └── Notes Agent      → create, search, update, delete notes
           ↓
-   Google Cloud Datastore
+ Google Cloud Datastore
+          ↓
+ Google Cloud Run (Deployed API)
 ```
 
 Each sub-agent has its own set of tools (create, list, update, delete) and only gets called when needed.
